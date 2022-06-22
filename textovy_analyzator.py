@@ -54,17 +54,7 @@ if str(login) in users.logins:
 
             # počet slov začínajících velkým písmenem,
 
-            words_with_capitals = 0
-
-            for words in analyzed_text:
-                if words[0].isupper():
-                    words_with_capitals += 1
-
-            if words_with_capitals == 1:
-                print("There is 1 titlecase word.")
-            else:
-                print(f"There are {words_with_capitals} titlecase words.")
-            # print(analyzed_text)
+            fs.get_words_with_capitals(chosen_text)
 
             # počet slov psaných velkými písmeny,
 
@@ -194,18 +184,7 @@ if str(login) in users.logins:
                           f"text.")
 
                 # počet slov začínajících velkým písmenem,
-
-                words_with_capitals = 0
-
-                for words in analyzed_text:
-                    if words[0].isupper():
-                        words_with_capitals += 1
-
-                if words_with_capitals == 1:
-                    print("There is 1 titlecase word.")
-                else:
-                    print(f"There are {words_with_capitals} titlecase words.")
-                # print(analyzed_text)
+                fs.get_words_with_capitals(int(chosen_text) - 1)
 
                 # počet slov psaných velkými písmeny,
 

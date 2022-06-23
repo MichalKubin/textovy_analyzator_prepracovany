@@ -53,87 +53,23 @@ if str(login) in users.logins:
                 print(f"There are {word_count} words in the selected text.")
 
             # počet slov začínajících velkým písmenem,
-
             fs.get_words_with_capitals(chosen_text)
 
             # počet slov psaných velkými písmeny,
-
-            words_uppercase = 0
-
-            for words in analyzed_text:
-                if words.isupper() and words.isalpha():
-                    words_uppercase += 1
-                elif words.isupper() and words.isalpha() is False:
-                    words_uppercase += 0
-
-            if words_uppercase == 1:
-                print("There is 1 uppercase word.")
-            else:
-                print(f"There are {words_uppercase} uppercase words.")
+            fs.get_uppercase_words(chosen_text)
 
             # počet slov psaných malými písmeny,
-
-            words_lowercase = 0
-
-            for words in analyzed_text:
-                if words.islower():
-                    words_lowercase += 1
-
-            if words_lowercase == 1:
-                print("There is 1 lowercase word.")
-            else:
-                print(f"There are {words_lowercase} lowercase words.")
+            fs.get_lowercase_words(chosen_text)
 
             # počet čísel (ne cifer),
-
-            numbers_count = 0
-
-            for words in analyzed_text:
-                if words.isnumeric():
-                    numbers_count += 1
-
-            if numbers_count == 1:
-                print("There is 1 numeric string.")
-            else:
-                print(f"There are {numbers_count} numeric strings.")
+            fs.get_numbers(chosen_text)
 
             # sumu všech čísel (ne cifer) v textu.
-
-            numbers_sum = 0
-            numbers_sum = int(numbers_sum)
-
-            for words in analyzed_text:
-                if words.isnumeric():
-                    numbers_sum += int(words)
-
-            print(f"The sum of all the numbers: {numbers_sum}")
+            fs.get_sum(chosen_text)
 
             # Program zobrazí jednoduchý sloupcový graf, který bude
             # reprezentovat četnost různých délek slov v textu.
-
-            print(separator)
-            print(" LEN |       OCCURENCES       | NR. ")
-            print(separator)
-
-            word_length = []
-
-            for words in analyzed_text:
-                word_length.append(len(words))
-
-            word_length.sort()
-            # print(word_length)
-
-            count_length = 1
-
-            while count_length <= word_length[-1]:
-                print(str(count_length).rjust(4) +
-                      str("") * (4 - len(str(count_length))) +
-                      " |" +
-                      "*" * (word_length.count(count_length)) +
-                      " " * (24 - word_length.count(count_length)) +
-                      "|" +
-                      str(word_length.count(count_length)).rjust(4))
-                count_length += 1
+            fs.print_graph(chosen_text)
 
         else:
             print(f"We have {texts_count} texts to be analyzed.")
@@ -188,82 +124,20 @@ if str(login) in users.logins:
 
                 # počet slov psaných velkými písmeny,
 
-                words_uppercase = 0
-
-                for words in analyzed_text:
-                    if words.isupper() and words.isalpha():
-                        words_uppercase += 1
-                    elif words.isupper() and words.isalpha() is False:
-                        words_uppercase += 0
-
-                if words_uppercase == 1:
-                    print("There is 1 uppercase word.")
-                else:
-                    print(f"There are {words_uppercase} uppercase words.")
+                fs.get_uppercase_words(int(chosen_text) - 1)
 
                 # počet slov psaných malými písmeny,
-
-                words_lowercase = 0
-
-                for words in analyzed_text:
-                    if words.islower():
-                        words_lowercase += 1
-
-                if words_lowercase == 1:
-                    print("There is 1 lowercase word.")
-                else:
-                    print(f"There are {words_lowercase} lowercase words.")
+                fs.get_lowercase_words(int(chosen_text) - 1)
 
                 # počet čísel (ne cifer),
-
-                numbers_count = 0
-
-                for words in analyzed_text:
-                    if words.isnumeric():
-                        numbers_count += 1
-
-                if numbers_count == 1:
-                    print("There is 1 numeric string.")
-                else:
-                    print(f"There are {numbers_count} numeric strings.")
+                fs.get_numbers(int(chosen_text) - 1)
 
                 # sumu všech čísel (ne cifer) v textu.
-
-                numbers_sum = 0
-                numbers_sum = int(numbers_sum)
-
-                for words in analyzed_text:
-                    if words.isnumeric():
-                        numbers_sum += int(words)
-
-                print(f"The sum of all the numbers: {numbers_sum}")
+                fs.get_sum(int(chosen_text) - 1)
 
                 # Program zobrazí jednoduchý sloupcový graf, který bude
                 # reprezentovat četnost různých délek slov v textu.
-
-                print(separator)
-                print(" LEN |       OCCURENCES       | NR. ")
-                print(separator)
-
-                word_length = []
-
-                for words in analyzed_text:
-                    word_length.append(len(words))
-
-                word_length.sort()
-                # print(word_length)
-
-                count_length = 1
-
-                while count_length <= word_length[-1]:
-                    print(str(count_length).rjust(4) +
-                          str("") * (4 - len(str(count_length))) +
-                          " |" +
-                          "*" * (word_length.count(count_length)) +
-                          " " * (24 - word_length.count(count_length)) +
-                          "|" +
-                          str(word_length.count(count_length)).rjust(4))
-                    count_length += 1
+                fs.print_graph(int(chosen_text) - 1)
 
     # pokud nesedí login a heslo, upozorni uživatele a ukonči program
 
